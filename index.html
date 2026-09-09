@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關西跨區漫遊特快 2026｜名古屋・京都・大阪 5日遊</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Arial', 'Noto Sans TC', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #f9f7f2 0%, #eee7dc 95%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 10px 30px -5px rgba(25, 28, 45, 0.06);
+    }
+    .badge-flight { background-color: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .badge-spot { background-color: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .badge-food { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .badge-transit { background-color: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .badge-event { background-color: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar { height: 6px; width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased pb-32">
+
+  <header class="pt-8 pb-4 px-4 max-w-4xl mx-auto">
+    <!-- Top Meta Row -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-300/70 pb-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 text-amber-200 text-xs font-medium tracking-wider mb-2.5 shadow-sm">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i> Kansai & Tokai Autumn Tour 2026
+        </div>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
+          名古屋 ➔ 京都 ➔ 大阪 5日遊
+        </h1>
+        <div class="text-xs sm:text-sm text-stone-500 mt-2 flex flex-wrap items-center gap-3">
+          <span class="flex items-center gap-1.5 font-medium text-stone-600">
+            <i data-lucide="calendar" class="w-4 h-4 text-stone-400"></i> 2026/09/26 (六) – 09/30 (三)
+          </span>
+          <span class="text-stone-300">|</span>
+          <span class="flex items-center gap-1.5 text-stone-600">
+            <i data-lucide="plane" class="w-4 h-4 text-sky-500"></i> IT206 去 / GK055 回
+          </span>
+          <span class="text-stone-300">|</span>
+          <span class="flex items-center gap-1 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> <span id="overallProgressText">0% 已完成</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Hotel Widget & Utility Tools -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <a href="https://www.google.com/maps/search/?api=1&query=APA+NAMBA+EKIMAE+TOWER" target="_blank" 
+           class="glass-card px-3.5 py-2.5 rounded-2xl flex items-center gap-3 hover:border-amber-400 hover:shadow transition text-xs md:text-sm font-medium">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-800 flex items-center justify-center font-bold">
+            <i data-lucide="hotel" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] text-stone-400 leading-tight">全期下榻飯店</div>
+            <div class="font-bold text-slate-800">APA 難波站前 Tower</div>
+          </div>
+        </a>
+
+        <!-- Quick Tools Launcher Buttons -->
+        <button onclick="openModal('currencyModal')" class="glass-card p-2.5 rounded-2xl hover:border-sky-400 hover:text-sky-600 transition shadow-sm text-stone-700" title="日幣匯率換算">
+          <i data-lucide="wallet" class="w-5 h-5"></i>
+        </button>
+        <button onclick="openModal('expenseModal')" class="glass-card p-2.5 rounded-2xl hover:border-indigo-400 hover:text-indigo-600 transition shadow-sm text-stone-700 relative" title="旅費分帳與誰付錢">
+          <i data-lucide="receipt" class="w-5 h-5"></i>
+          <span id="expenseCountBadge" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-indigo-600 text-[9px] text-white font-bold rounded-full flex items-center justify-center">0</span>
+        </button>
+        <button onclick="openModal('checklistModal')" class="glass-card p-2.5 rounded-2xl hover:border-emerald-400 hover:text-emerald-600 transition shadow-sm text-stone-700" title="行前裝備清單">
+          <i data-lucide="list-checks" class="w-5 h-5"></i>
+        </button>
+        <button onclick="openModal('phrasesModal')" class="glass-card p-2.5 rounded-2xl hover:border-amber-400 hover:text-amber-600 transition shadow-sm text-stone-700" title="旅日應急日語">
+          <i data-lucide="message-square" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Date & Day Switcher Tabs -->
+    <div class="flex gap-2 overflow-x-auto py-3.5 scrollbar-none snap-x" id="dayTabs">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Day Overview Ribbon (Weather & Quick Tips) -->
+    <div id="daySummaryCard" class="glass-card rounded-2xl p-4 mt-1 border border-stone-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <!-- Injected via JavaScript -->
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 mt-2">
+    
+    <!-- Controls: Category Filter & Day 3 USJ/City Toggle -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6">
+      
+      <!-- Day 3 USJ vs City Toggle (Only visible on Day 3) -->
+      <div id="groupToggle" class="hidden glass-card p-1 rounded-2xl flex items-center justify-center gap-1 w-full sm:w-auto shadow-sm border border-stone-200">
+        <button onclick="setSubGroup('usj')" id="btn-usj" class="flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition">
+          🎢 環球影城組 (熱血遊樂)
+        </button>
+        <button onclick="setSubGroup('free')" id="btn-free" class="flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition">
+          🚶 市區自由漫遊組 (探店散策)
+        </button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none" id="categoryFilters">
+        <button onclick="setCategoryFilter('all')" data-cat="all" class="filter-pill active px-3 py-1 rounded-xl text-xs font-medium bg-slate-900 text-white shadow-xs">全部</button>
+        <button onclick="setCategoryFilter('spot')" data-cat="spot" class="filter-pill px-3 py-1 rounded-xl text-xs font-medium glass-card text-stone-600 hover:text-slate-900">景點</button>
+        <button onclick="setCategoryFilter('food')" data-cat="food" class="filter-pill px-3 py-1 rounded-xl text-xs font-medium glass-card text-stone-600 hover:text-slate-900">美食</button>
+        <button onclick="setCategoryFilter('transit')" data-cat="transit" class="filter-pill px-3 py-1 rounded-xl text-xs font-medium glass-card text-stone-600 hover:text-slate-900">交通/航班</button>
+        <button onclick="setCategoryFilter('event')" data-cat="event" class="filter-pill px-3 py-1 rounded-xl text-xs font-medium glass-card text-stone-600 hover:text-slate-900">賽事</button>
+      </div>
+
+      <!-- Quick Action: Copy Schedule Summary -->
+      <button onclick="copyDaySchedule()" class="text-stone-500 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 shrink-0 py-1">
+        <i data-lucide="copy" class="w-3.5 h-3.5"></i> 複製當日行程表
+      </button>
+    </div>
+
+    <!-- Timeline Event Nodes -->
+    <div class="relative pl-6 sm:pl-7 border-l-2 border-stone-300 ml-3.5 space-y-5" id="timelineList">
+      <!-- Injected via JavaScript -->
+    </div>
+  </main>
+
+  <div class="fixed bottom-4 inset-x-4 max-w-lg mx-auto z-40">
+    <div class="glass-card p-3 rounded-2xl shadow-2xl border border-white/90 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 text-amber-300 flex items-center justify-center font-bold text-sm shadow-sm">
+          <i data-lucide="bed-double" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-[10px] text-stone-400 font-medium">每日終點站 (難波站直結)</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-900">APA 難波站前 Tower</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openModal('expenseModal')" class="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition" title="分帳記帳">
+          <i data-lucide="receipt" class="w-4 h-4"></i>
+        </button>
+        <button onclick="openModal('currencyModal')" class="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition" title="日幣計算機">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+        </button>
+        <a href="https://www.google.com/maps/search/?api=1&query=APA+Hotel+%26+Resort+Osaka+Namba+Ekimae+Tower" target="_blank"
+           class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+          一鍵回飯店 <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Currency Converter -->
+  <div id="currencyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 shadow-2xl border border-white/90 relative animate-in fade-in zoom-in duration-150">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center">
+            <i data-lucide="coins" class="w-4 h-4"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900">日幣 ⇄ 台幣 換算器</h3>
+        </div>
+        <button onclick="closeModal('currencyModal')" class="p-1 rounded-full text-stone-400 hover:text-stone-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 pt-4 text-xs">
+        <div>
+          <label class="block font-medium text-stone-500 mb-1">參考匯率 (1 JPY = ? TWD)</label>
+          <input type="number" id="exchangeRate" value="0.215" step="0.005" oninput="calculateCurrency()"
+                 class="w-full p-2.5 rounded-xl border border-stone-300 bg-white/80 font-mono text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-slate-900">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-stone-500 mb-1">日幣 (¥ JPY)</label>
+            <input type="number" id="inputJpy" placeholder="1000" value="1000" oninput="convertFromJpy()"
+                   class="w-full p-2.5 rounded-xl border border-stone-300 bg-white/80 font-mono text-base font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900">
+          </div>
+          <div>
+            <label class="block font-medium text-stone-500 mb-1">約合新台幣 ($ TWD)</label>
+            <input type="number" id="inputTwd" placeholder="215" oninput="convertFromTwd()"
+                   class="w-full p-2.5 rounded-xl border border-stone-300 bg-white/80 font-mono text-base font-bold text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+          </div>
+        </div>
+
+        <!-- Quick JPY Presets -->
+        <div class="pt-2">
+          <span class="text-stone-400 text-[11px] block mb-1.5">常見面額快速試算：</span>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="setJpyPreset(500)" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg font-mono text-stone-700">¥500</button>
+            <button onclick="setJpyPreset(1000)" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg font-mono text-stone-700">¥1,000</button>
+            <button onclick="setJpyPreset(3000)" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg font-mono text-stone-700">¥3,000</button>
+            <button onclick="setJpyPreset(5000)" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg font-mono text-stone-700">¥5,000</button>
+            <button onclick="setJpyPreset(10000)" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg font-mono text-stone-700">¥10,000</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Luggage Checklist -->
+  <div id="checklistModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-white/90 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-stone-200 shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-800 flex items-center justify-center">
+            <i data-lucide="check-square" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-slate-900">行前與球賽必備檢查清單</h3>
+            <span class="text-[11px] text-stone-400" id="checklistCounter">0 / 0 已勾選</span>
+          </div>
+        </div>
+        <button onclick="closeModal('checklistModal')" class="p-1 rounded-full text-stone-400 hover:text-stone-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto py-3 space-y-4 text-xs pr-1" id="checklistContainer">
+        <!-- Checklist categories injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Emergency Phrases & Info -->
+  <div id="phrasesModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-white/90 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-stone-200 shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-800 flex items-center justify-center">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+          </div>
+          <h3 class="font-bold text-base text-slate-900">旅行手指日語 & 緊急備忘</h3>
+        </div>
+        <button onclick="closeModal('phrasesModal')" class="p-1 rounded-full text-stone-400 hover:text-stone-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto py-3 space-y-3 text-xs pr-1">
+        <!-- Japanese Phrase Cards -->
+        <div class="p-3 bg-white/75 rounded-2xl border border-stone-200 flex items-start justify-between gap-3">
+          <div>
+            <div class="font-bold text-slate-900 text-sm">請問可以寄放行李嗎？</div>
+            <div class="text-amber-900 font-mono text-xs mt-0.5">荷物を預かっていただけますか？</div>
+            <div class="text-[11px] text-stone-400">Ni-motsu o azukatte itadakemasu ka?</div>
+          </div>
+          <button onclick="copySnippet('荷物を預かっていただけますか？')" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 font-semibold shrink-0">複製</button>
+        </div>
+
+        <div class="p-3 bg-white/75 rounded-2xl border border-stone-200 flex items-start justify-between gap-3">
+          <div>
+            <div class="font-bold text-slate-900 text-sm">麻煩結帳（買單）</div>
+            <div class="text-amber-900 font-mono text-xs mt-0.5">お会計をお願いします。</div>
+            <div class="text-[11px] text-stone-400">O-kaikei o onegaishimasu.</div>
+          </div>
+          <button onclick="copySnippet('お会計をお願いします。')" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 font-semibold shrink-0">複製</button>
+        </div>
+
+        <div class="p-3 bg-white/75 rounded-2xl border border-stone-200 flex items-start justify-between gap-3">
+          <div>
+            <div class="font-bold text-slate-900 text-sm">請問可以免稅退稅嗎？</div>
+            <div class="text-amber-900 font-mono text-xs mt-0.5">免税できますか？</div>
+            <div class="text-[11px] text-stone-400">Menzei dekimasu ka?</div>
+          </div>
+          <button onclick="copySnippet('免税できますか？')" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 font-semibold shrink-0">複製</button>
+        </div>
+
+        <div class="p-3 bg-white/75 rounded-2xl border border-stone-200 flex items-start justify-between gap-3">
+          <div>
+            <div class="font-bold text-slate-900 text-sm">請問這班車往大阪/京都嗎？</div>
+            <div class="text-amber-900 font-mono text-xs mt-0.5">この電車は大阪・京都に行きますか？</div>
+            <div class="text-[11px] text-stone-400">Kono densha wa Osaka/Kyoto ni ikimasu ka?</div>
+          </div>
+          <button onclick="copySnippet('この電車は大阪・京都に行きますか？')" class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 font-semibold shrink-0">複製</button>
+        </div>
+
+        <!-- Emergency Phone Numbers -->
+        <div class="p-3.5 bg-rose-50 border border-rose-200 rounded-2xl">
+          <div class="font-bold text-rose-800 text-xs flex items-center gap-1.5 mb-1">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> 日本緊急聯絡與辦事處
+          </div>
+          <div class="text-[11px] text-rose-900/80 space-y-1">
+            <div>🚨 警察報案：110 ｜ 救護車/火警：119</div>
+            <div>🇹🇼 台北駐大阪經濟文化辦事處急難救助：<span class="font-mono font-bold">+81-90-8794-4568</span></div>
+            <div>🏥 日本觀光局訪日外國人熱線：050-3816-2720 (支援中文)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Expense & Who Paid Manager -->
+  <div id="expenseModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-card w-full max-w-xl rounded-3xl p-5 sm:p-6 shadow-2xl border border-white/90 max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-150">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-stone-200 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-700 flex items-center justify-center font-bold">
+            <i data-lucide="receipt" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-slate-900">旅費分帳與誰付錢計算機</h3>
+            <span class="text-[11px] text-stone-400">記錄代墊支出・自動精算誰該給誰多少錢</span>
+          </div>
+        </div>
+        <button onclick="closeModal('expenseModal')" class="p-1 rounded-full text-stone-400 hover:text-stone-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="flex items-center gap-1.5 p-1 bg-stone-100 rounded-xl my-3 shrink-0 text-xs font-bold">
+        <button onclick="setExpenseTab('list')" id="tabBtn-list" class="flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition">
+          📝 支出記帳
+        </button>
+        <button onclick="setExpenseTab('settle')" id="tabBtn-settle" class="flex-1 py-1.5 rounded-lg text-stone-500 hover:text-slate-900 transition">
+          ⚖️ 結算清算 (<span id="settleSummaryBadge">0</span>)
+        </button>
+        <button onclick="setExpenseTab('members')" id="tabBtn-members" class="flex-1 py-1.5 rounded-lg text-stone-500 hover:text-slate-900 transition">
+          👥 成員設定
+        </button>
+      </div>
+
+      <!-- Tab 1: Expense List & Add Form -->
+      <div id="expenseTab-list" class="overflow-y-auto space-y-4 pr-1 text-xs">
+        <!-- Add Expense Card -->
+        <div class="p-3.5 bg-white/85 rounded-2xl border border-stone-200/80 shadow-xs">
+          <div class="font-bold text-slate-800 mb-2.5 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i data-lucide="plus-circle" class="w-3.5 h-3.5 text-indigo-600"></i> 新增一筆花費</span>
+            <span class="text-[10px] text-stone-400 font-normal">匯率參考：1 JPY ≈ 0.215 TWD</span>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
+            <div>
+              <label class="block text-[10px] text-stone-400 mb-0.5 font-medium">消費品項名稱</label>
+              <input type="text" id="expTitle" placeholder="例如：道頓堀壽喜燒 / 環球門票" 
+                     class="w-full p-2 rounded-xl border border-stone-300 bg-white font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label class="block text-[10px] text-stone-400 mb-0.5 font-medium">金額與幣別</label>
+              <div class="flex gap-1.5">
+                <select id="expCurrency" class="p-2 rounded-xl border border-stone-300 bg-white font-bold text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 shrink-0">
+                  <option value="JPY">¥ 日幣 (JPY)</option>
+                  <option value="TWD">$ 台幣 (TWD)</option>
+                </select>
+                <input type="number" id="expAmount" placeholder="金額" 
+                       class="w-full p-2 rounded-xl border border-stone-300 bg-white font-mono font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
+            <div>
+              <label class="block text-[10px] text-stone-400 mb-0.5 font-medium">誰先墊錢 (付款人)</label>
+              <select id="expPayer" class="w-full p-2 rounded-xl border border-stone-300 bg-white font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <!-- Injected via JS -->
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] text-stone-400 mb-0.5 font-medium">消費類別</label>
+              <select id="expCategory" class="w-full p-2 rounded-xl border border-stone-300 bg-white font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="food">🍽️ 美食餐飲</option>
+                <option value="transit">🚅 交通機票</option>
+                <option value="ticket">🎟️ 門票活動</option>
+                <option value="stay">🏨 住宿飯店</option>
+                <option value="shop">🛍️ 購物紀念品</option>
+                <option value="other">📦 其他雜支</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Split among checkboxes -->
+          <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-[10px] text-stone-400 font-medium">誰一起分攤 (預設全員均分)</label>
+              <button type="button" onclick="selectAllBeneficiaries(true)" class="text-[10px] text-indigo-600 hover:underline">全選</button>
+            </div>
+            <div class="flex flex-wrap gap-2" id="beneficiariesCheckboxes">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+
+          <button onclick="submitNewExpense()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 shadow-sm transition">
+            <i data-lucide="check" class="w-4 h-4"></i> 記入分帳清單
+          </button>
+        </div>
+
+        <!-- Expense History Items -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-slate-800">支出明細紀錄</span>
+            <span id="expenseTotalStat" class="text-[11px] text-stone-500 font-mono">共 0 筆</span>
+          </div>
+          <div class="space-y-2" id="expenseListContainer">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Settlement & Who Owes Whom -->
+      <div id="expenseTab-settle" class="overflow-y-auto space-y-4 pr-1 text-xs hidden">
+        <!-- Overview Stats -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="p-3 bg-white/80 rounded-2xl border border-stone-200 text-center">
+            <div class="text-[10px] text-stone-400">總消費金額 (換算台幣)</div>
+            <div class="text-base font-black text-slate-900 mt-0.5" id="totalSpendTwd">$0 TWD</div>
+          </div>
+          <div class="p-3 bg-white/80 rounded-2xl border border-stone-200 text-center">
+            <div class="text-[10px] text-stone-400">總消費金額 (換算日幣)</div>
+            <div class="text-base font-black text-amber-700 mt-0.5 font-mono" id="totalSpendJpy">¥0 JPY</div>
+          </div>
+        </div>
+
+        <!-- Members Net Balance Breakdown -->
+        <div class="p-3.5 bg-white/85 rounded-2xl border border-stone-200">
+          <div class="font-bold text-slate-900 mb-2.5 flex items-center gap-1.5">
+            <i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i> 每人收支差額彙總
+          </div>
+          <div class="space-y-2" id="memberBalanceList">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Smart Settlement Result (Who owes who how much) -->
+        <div class="p-3.5 bg-indigo-50/70 border border-indigo-200 rounded-2xl">
+          <div class="font-bold text-indigo-900 mb-1 flex items-center gap-1.5">
+            <i data-lucide="arrow-left-right" class="w-4 h-4 text-indigo-600"></i> 智慧平帳建議（最精簡轉帳路徑）
+          </div>
+          <p class="text-[11px] text-indigo-700/80 mb-3">
+            無需多方往返，依照下列清算指示即可一次結清所有代墊款項：
+          </p>
+          <div class="space-y-2" id="settlementTransfersContainer">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Copy to LINE Action -->
+        <button onclick="copySettlementForLine()" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 shadow-sm transition">
+          <i data-lucide="share-2" class="w-4 h-4 text-emerald-400"></i> 一鍵複製 LINE 結算清單文字
+        </button>
+      </div>
+
+      <!-- Tab 3: Member Management -->
+      <div id="expenseTab-members" class="overflow-y-auto space-y-3.5 pr-1 text-xs hidden">
+        <div class="p-3.5 bg-white/80 rounded-2xl border border-stone-200">
+          <div class="font-bold text-slate-800 mb-1">新增旅行同行者</div>
+          <p class="text-[11px] text-stone-400 mb-2.5">設定誰在此趟名古屋・京都・大阪行程中共同分帳。</p>
+          <div class="flex gap-2">
+            <input type="text" id="newMemberInput" placeholder="夥伴名字（如：大衛、小美）" 
+                   class="flex-1 p-2 rounded-xl border border-stone-300 bg-white text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <button onclick="addNewMember()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shrink-0 transition">
+              新增
+            </button>
+          </div>
+        </div>
+
+        <div class="p-3.5 bg-white/80 rounded-2xl border border-stone-200">
+          <div class="font-bold text-slate-800 mb-2 flex items-center justify-between">
+            <span>現有成員名單</span>
+            <span class="text-[11px] text-stone-400" id="memberCountText">共 0 位</span>
+          </div>
+          <div class="divide-y divide-stone-100" id="membersListContainer">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-2xl glass-card border border-stone-300 shadow-xl text-xs font-bold text-slate-900 hidden transition duration-300 z-50 flex items-center gap-2">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>
+    <span id="toastMsg">通知訊息</span>
+  </div>
+
+  <script>
+    const itinerary = [
+      {
+        day: 1,
+        date: "9/26 (六)",
+        city: "名古屋 ➔ 大阪",
+        weather: "晴時多雲 25°C",
+        weatherIcon: "sun",
+        tagline: "抵達中部國際機場 ➔ 名古屋城登頂 ➔ 新幹線直奔大阪",
+        tip: "抵達機場先在名鐵線確認 ICOCA / Suica 加值；名古屋站置物櫃熱門，建議備好千元日幣。",
+        items: [
+          { 
+            id: "d1-1",
+            time: "09:00", 
+            title: "台北 ➔ 名古屋 (台灣虎航 IT206)", 
+            type: "flight", 
+            isFlightCard: true,
+            flightCode: "IT206",
+            airline: "台灣虎航 Tigerair Taiwan",
+            depAirport: "TPE 桃園 (T1)",
+            arrAirport: "NGO 中部國際 (T1)",
+            depTime: "預計早晨起飛",
+            arrTime: "12:55 抵達",
+            trackUrl: "https://www.flightradar24.com/data/flights/it206",
+            desc: "入境中部國際機場一航廈後，順著指標前往「名鐵乘車處」，可持 ICOCA 或購票搭乘特急進入名古屋市區（約28-35分）。",
+            maps: "中部國際機場第一航廈"
+          },
+          { 
+            id: "d1-2",
+            time: "11:00", 
+            title: "交通整備：名鐵特急 & ICOCA 確認", 
+            type: "transit", 
+            desc: "搭乘名鐵特急 μ-SKY 或一般特急前往名鐵名古屋站；檢查 ICOCA 實體卡或手機 Suica 餘額。", 
+            maps: "名鐵名古屋站" 
+          },
+          { 
+            id: "d1-3",
+            time: "13:00", 
+            title: "名古屋城巡禮 & 車站寄物", 
+            type: "spot", 
+            desc: "名古屋車站寄存大件行李後，搭地鐵至名古屋城。參觀宏偉天守閣外觀、本丸御殿金箔屏風壁畫與金鯱石垣。", 
+            maps: "名古屋城" 
+          },
+          { 
+            id: "d1-4",
+            time: "15:00", 
+            title: "IG Arena 新地標踩點參訪", 
+            type: "spot", 
+            desc: "前往名古屋全新現代化體育館 IG Arena（愛知縣新體育館）巡禮，欣賞流線型現代建築外觀與周邊散策。", 
+            maps: "愛知縣新體育館" 
+          },
+          { 
+            id: "d1-5",
+            time: "19:00", 
+            title: "東海道新幹線 ➔ 直達新大阪", 
+            type: "transit", 
+            desc: "回到名古屋站取行李，搭乘新幹線 Nozomi（約 50 分鐘）直達新大阪站，隨後轉乘 Osaka Metro 御堂筋線前往難波。", 
+            highlight: "建議搭乘 20:30~21:50 班次，直達新大阪", 
+            maps: "JR 名古屋站" 
+          },
+          { 
+            id: "d1-6",
+            time: "22:00", 
+            title: "辦理入住：APA 難波站前 Tower", 
+            type: "hotel", 
+            desc: "入住高聳景觀飯店 APA Hotel & Resort Osaka Namba Ekimae Tower，整理裝備充分享受大阪之夜。", 
+            maps: "APA Hotel & Resort Osaka Namba Ekimae Tower" 
+          }
+        ]
+      },
+      {
+        day: 2,
+        date: "9/27 (日)",
+        city: "京都古典一日漫步",
+        weather: "晴朗秋意 24°C",
+        weatherIcon: "sun",
+        tagline: "千本鳥居・清水古道・鴨川黃昏・道頓堀壽喜燒",
+        tip: "京都石階階梯多，請著最舒適好走的慢跑鞋；伏見稻荷早晨鳥居光影最佳。",
+        items: [
+          { 
+            id: "d2-1",
+            time: "08:30", 
+            title: "晨間搭乘電車前往京都", 
+            type: "transit", 
+            desc: "從難波搭地鐵至淀屋橋轉京阪本線特急直通伏見稻荷，或由大阪站搭 JR 新快速約 30 分抵達京都。", 
+            maps: "京都車站" 
+          },
+          { 
+            id: "d2-2",
+            time: "10:00", 
+            title: "伏見稻荷大社：千本鳥居", 
+            type: "spot", 
+            desc: "穿梭滿山朱紅色千本鳥居，祈求旅途平安順遂；時間充裕可漫步至奧社奉拜所購買狐狸繪馬。", 
+            maps: "伏見稻荷大社" 
+          },
+          { 
+            id: "d2-3",
+            time: "12:30", 
+            title: "京都町家午餐 & 宇治茶甜點", 
+            type: "food", 
+            desc: "在祇園周邊享用清爽京都湯豆腐定食、抹茶冰淇淋或京都鴨南蠻蕎麥麵。", 
+            maps: "祇園" 
+          },
+          { 
+            id: "d2-4",
+            time: "14:30", 
+            title: "清水寺 ➔ 二年坂/三年坂 ➔ 八坂神社", 
+            type: "spot", 
+            desc: "登上壯觀清水舞台俯瞰京都市景，沿石疊小路漫步二年坂、三年坂百年京町家老街，最後漫遊至八坂神社。", 
+            maps: "清水寺" 
+          },
+          { 
+            id: "d2-5",
+            time: "17:00", 
+            title: "鴨川河畔散步 & 京都伴手禮採買", 
+            type: "spot", 
+            desc: "傍晚漫步鴨川享受初秋涼爽微風，隨後在京都車站購買祇園辻利或丸久小山園宇治綠茶。", 
+            maps: "鴨川 四條大橋" 
+          },
+          { 
+            id: "d2-6",
+            time: "19:30", 
+            title: "道頓堀極致夜食：人氣壽喜燒 Shabuwara", 
+            type: "food", 
+            desc: "搭車返抵大阪，前往道頓堀名店「Shabuwara (しゃぶ笑)」品嚐頂級黑毛和牛壽喜燒與涮涮鍋。", 
+            highlight: "人氣排隊名店，建議提前訂位或避開尖峰", 
+            maps: "道頓堀 Shabuwara" 
+          },
+          { 
+            id: "d2-7",
+            time: "22:00", 
+            title: "回飯店休息泡湯充電", 
+            type: "hotel", 
+            desc: "返回 APA 難波站前 Tower，整理戰利品、好好舒緩雙腿。", 
+            maps: "APA Hotel & Resort Osaka Namba Ekimae Tower" 
+          }
+        ]
+      },
+      {
+        day: 3,
+        date: "9/28 (一)",
+        city: "分組探險日 (USJ / 大阪)",
+        weather: "多雲舒適 26°C",
+        weatherIcon: "cloud-sun",
+        tagline: "分組冒險日：USJ瑪利歐狂歡 vs 大阪深度下町採買",
+        tip: "環球影城入園後務必開啟 USJ App 抽取超級任天堂世界「區域入場保證券 (整理券)」。",
+        isSplit: true,
+        usjItems: [
+          { 
+            id: "d3u-1",
+            time: "08:30", 
+            title: "抵達 USJ 日本環球影城直衝園區", 
+            type: "spot", 
+            desc: "搭 JR 環狀線至西九條轉夢咲線直達影城！第一時間衝刺超級任天堂世界體驗瑪利歐賽車庫巴的挑戰書！", 
+            highlight: "熱門設施：瑪利歐賽車、哈利波特禁忌之旅", 
+            maps: "日本環球影城" 
+          },
+          { 
+            id: "d3u-2",
+            time: "12:30", 
+            title: "主題樂園特色午餐", 
+            type: "food", 
+            desc: "在奇諾比奧咖啡店 (Kinopio's Cafe) 或活米村三根掃帚享用烤雞拼盤與經典奶油啤酒！", 
+            maps: "奇諾比奧咖啡店" 
+          },
+          { 
+            id: "d3u-3",
+            time: "15:30", 
+            title: "園區限定周邊採購 & 水世界／遊行大秀", 
+            type: "spot", 
+            desc: "採買敲磚金幣造型鐵盒餅乾、問號方塊玩偶、霍格華茲魔法袍，觀賞戶外熱血狂歡大遊行。", 
+            maps: "日本環球影城" 
+          },
+          { 
+            id: "d3u-4",
+            time: "19:00", 
+            title: "難波居酒屋會合・慶功晚餐", 
+            type: "food", 
+            desc: "搭乘 JR 返回難波與市區漫遊組會合，在道頓堀巷弄居酒屋暢飲角嗨與大阪燒料理。", 
+            maps: "難波" 
+          },
+          { 
+            id: "d3u-5",
+            time: "22:00", 
+            title: "回飯店休息", 
+            type: "hotel", 
+            desc: "返回 APA 難波站前 Tower 休息。", 
+            maps: "APA Hotel & Resort Osaka Namba Ekimae Tower" 
+          }
+        ],
+        freeItems: [
+          { 
+            id: "d3f-1",
+            time: "09:30", 
+            title: "難波八阪神社巨獅殿 & 早午餐", 
+            type: "spot", 
+            desc: "拜訪難波震撼人心的大型「獅子殿」神社，據說巨口能吞噬厄運、招來好運與財運，隨後品嚐精品手沖咖啡。", 
+            maps: "難波八阪神社" 
+          },
+          { 
+            id: "d3f-2",
+            time: "11:30", 
+            title: "黑門市場：鮮美海膽・和牛・帆立貝", 
+            type: "food", 
+            desc: "漫步大阪廚房黑門市場，現烤厚切神戶和牛串、生食級大干貝與肥美海膽壽司小吃。", 
+            maps: "黑門市場" 
+          },
+          { 
+            id: "d3f-3",
+            time: "14:30", 
+            title: "中之島水都美學散策 / 梅田大百貨", 
+            type: "spot", 
+            desc: "搭地鐵探訪中之島美術館周邊水都林蔭大道，或前往梅田 Grand Front、LUCUA 採買流行服飾與生活日用品。", 
+            maps: "大阪中之島美術館" 
+          },
+          { 
+            id: "d3f-4",
+            time: "19:00", 
+            title: "難波會合・居酒屋慶功夜食", 
+            type: "food", 
+            desc: "回到難波與影城組碰面，互相展示今日戰利品，痛快享用大阪炸串與海鮮料理！", 
+            maps: "道頓堀" 
+          },
+          { 
+            id: "d3f-5",
+            time: "22:00", 
+            title: "回飯店休息", 
+            type: "hotel", 
+            desc: "返回 APA 難波站前 Tower 整理打包。", 
+            maps: "APA Hotel & Resort Osaka Namba Ekimae Tower" 
+          }
+        ]
+      },
+      {
+        day: 4,
+        date: "9/29 (二)",
+        city: "大阪城・新世界 ➔ 甲子園",
+        weather: "多雲到晴 25°C",
+        weatherIcon: "sun",
+        tagline: "大阪城公園 ➔ 昭和通天閣 ➔ 阪神甲子園夜戰激鬥",
+        tip: "甲子園球場禁止攜帶瓶罐裝飲料入場；建議 16:30 前抵達球場購買周邊與甲子園名物咖哩！",
+        items: [
+          { 
+            id: "d4-1",
+            time: "09:30", 
+            title: "難波悠閒早午餐 & 精品咖啡", 
+            type: "food", 
+            desc: "在難波車站周邊人氣烘焙咖啡廳享用厚切吐司早午餐，充足元氣準備迎接熱血的一天。", 
+            maps: "難波 咖啡" 
+          },
+          { 
+            id: "d4-2",
+            time: "11:00", 
+            title: "大阪城公園 & 天守閣登高", 
+            type: "spot", 
+            desc: "穿過雄偉的巨石護城河與櫻門，登上天守閣展望台鳥瞰現代大阪高樓大廈與歷史巨城交融之景。", 
+            maps: "大阪城天守閣" 
+          },
+          { 
+            id: "d4-3",
+            time: "13:30", 
+            title: "通天閣 & 新世界老街品嚐元祖串炸", 
+            type: "food", 
+            desc: "體驗昭和下町懷舊風情，摸摸比利肯神像 (Billiken) 腳底祈求幸運；午餐品嚐「串炸達摩 (だるま)」金黃酥脆炸串！", 
+            highlight: "名物推薦：牛肉炸串、鵪鶉蛋、生啤酒", 
+            maps: "通天閣" 
+          },
+          { 
+            id: "d4-4",
+            time: "16:30", 
+            title: "搭阪神電車直達甲子園球場", 
+            type: "transit", 
+            desc: "從大阪難波站或梅田搭乘阪神本線快速急行電車，約 20 分鐘直抵「甲子園站」。", 
+            maps: "阪神甲子園球場" 
+          },
+          { 
+            id: "d4-5",
+            time: "18:00", 
+            title: "熱血燃燒：阪神虎 vs 養樂多燕子 棒球夜戰", 
+            type: "event", 
+            desc: "18:00 點火開打！沉浸在四萬黃黑虎迷的震天吶喊與經典隊歌《六甲颪》大合唱，品嚐經典甲子園黑咖哩與球場炒麵！", 
+            highlight: "18:00 準時開打！享受全日本最狂熱棒球聖地氣氛", 
+            maps: "阪神甲子園球場" 
+          },
+          { 
+            id: "d4-6",
+            time: "21:45", 
+            title: "散場電車回大阪飯店休息", 
+            type: "hotel", 
+            desc: "隨著人潮搭乘阪神電車返回難波，回到 APA 難波站前 Tower 休息整理明天返國行李。", 
+            maps: "APA Hotel & Resort Osaka Namba Ekimae Tower" 
+          }
+        ]
+      },
+      {
+        day: 5,
+        date: "9/30 (三)",
+        city: "難波最後採買 ➔ 關西機場",
+        weather: "晴朗舒適 24°C",
+        weatherIcon: "sun",
+        tagline: "退房藥妝伴手禮最後補貨 ➔ 南海特急 ➔ 賦歸台北",
+        tip: "關空出境檢查排隊人潮多，建議至少起飛前 2.5 小時 (12:50 前) 抵達機場辦理手續。",
+        items: [
+          { 
+            id: "d5-1",
+            time: "09:30", 
+            title: "飯店退房寄放行李 & 難波高島屋採買", 
+            type: "spot", 
+            desc: "在飯店櫃檯寄放大行李，前往 Bic Camera 買電器、松本清免稅藥妝補齊，或在高島屋地下街買洋菓子甜點。", 
+            maps: "難波高島屋" 
+          },
+          { 
+            id: "d5-2",
+            time: "12:00", 
+            title: "南海電鐵特急 Rapi:t 前往關西機場", 
+            type: "transit", 
+            desc: "從南海難波站搭乘帥氣深藍色特急 Rapi:t（約 38 分鐘）直達關西國際機場第一航廈。", 
+            highlight: "建議預訂 12:05 或 12:35 班次 Rapi:t", 
+            maps: "關西國際機場第一航廈" 
+          },
+          { 
+            id: "d5-3",
+            time: "13:00", 
+            title: "關西機場第一航廈報到與免稅店補貨", 
+            type: "spot", 
+            desc: "前往捷星 Japan 櫃檯託運行李與領取登機證，通關後採買白色戀人、ROYCE 生巧克力、東京芭娜娜等經典名產。", 
+            maps: "關西國際機場第一航廈" 
+          },
+          { 
+            id: "d5-4",
+            time: "15:20", 
+            title: "大阪 ➔ 台北 (捷星日本 GK055)", 
+            type: "flight", 
+            isFlightCard: true,
+            flightCode: "GK055",
+            airline: "捷星日本 Jetstar Japan",
+            depAirport: "KIX 關西機場 (T1)",
+            arrAirport: "TPE 桃園機場 (T1)",
+            depTime: "15:20 起飛",
+            arrTime: "17:20 抵達",
+            trackUrl: "https://www.flightradar24.com/data/flights/gk55",
+            desc: "15:20 起飛，17:20 順利返抵台灣桃園國際機場，結束充實難忘的秋季關西五日跨區探索之旅！", 
+            maps: "關西國際機場第一航廈" 
+          }
+        ]
+      }
+    ];
+
+    // Checklist Dataset
+    const checklistData = [
+      {
+        category: "必要證件與網路",
+        items: [
+          { id: "c1", text: "護照（效期 6 個月以上）" },
+          { id: "c2", text: "VJW (Visit Japan Web) 檢疫/入境 QR Code 截圖" },
+          { id: "c3", text: "日本 eSIM 或漫遊已開通確認" },
+          { id: "c4", text: "實體信用卡（海外高回饋）+ 現金日幣" }
+        ]
+      },
+      {
+        category: "電子與生活裝備",
+        items: [
+          { id: "c5", text: "行動電源（需隨身攜帶，不可託運）" },
+          { id: "c6", text: "萬國轉接頭 / 充電線材" },
+          { id: "c7", text: "舒適慢跑球鞋（伏見稻荷與清水寺耐走）" },
+          { id: "c8", text: "隨身折疊雨傘 / 薄外套（早晚溫差）" }
+        ]
+      },
+      {
+        category: "球賽與特定行程備忘",
+        items: [
+          { id: "c9", text: "甲子園棒球門票 QR Code / 訂單憑證" },
+          { id: "c10", text: "黃黑虎迷應援毛巾（球場可採購）" },
+          { id: "c11", text: "USJ 環球影城門票 App 登錄綁定" },
+          { id: "c12", text: "個人常備藥（腸胃藥、止痛藥、休足時間）" }
+        ]
+      }
+    ];
+
+    let currentDay = 1;
+    let currentSubGroup = 'usj';
+    let currentCategory = 'all';
+
+    const DEFAULT_MEMBERS = ['主揪 (我)', '夥伴 A', '夥伴 B'];
+    const DEFAULT_EXPENSES = [
+      {
+        id: "exp-1",
+        title: "道頓堀 Shabuwara 壽喜燒和牛晚餐",
+        currency: "JPY",
+        amount: 18600,
+        payer: "主揪 (我)",
+        beneficiaries: ["主揪 (我)", "夥伴 A", "夥伴 B"],
+        category: "food",
+        date: "9/27"
+      },
+      {
+        id: "exp-2",
+        title: "名鐵特急車票 + ICOCA 儲值代墊",
+        currency: "JPY",
+        amount: 6000,
+        payer: "夥伴 A",
+        beneficiaries: ["主揪 (我)", "夥伴 A", "夥伴 B"],
+        category: "transit",
+        date: "9/26"
+      },
+      {
+        id: "exp-3",
+        title: "甲子園球場 養樂多戰門票代購",
+        currency: "TWD",
+        amount: 3600,
+        payer: "夥伴 B",
+        beneficiaries: ["主揪 (我)", "夥伴 A", "夥伴 B"],
+        category: "ticket",
+        date: "9/29"
+      }
+    ];
+
+    let currentExpenseTab = 'list';
+
+    function getStoredMembers() {
+      try {
+        const stored = localStorage.getItem('kansai_split_members');
+        return stored ? JSON.parse(stored) : DEFAULT_MEMBERS;
+      } catch(e) {
+        return DEFAULT_MEMBERS;
+      }
+    }
+
+    function saveMembers(members) {
+      localStorage.setItem('kansai_split_members', JSON.stringify(members));
+      renderMemberOptions();
+      calculateSettlement();
+    }
+
+    function getStoredExpenses() {
+      try {
+        const stored = localStorage.getItem('kansai_split_expenses');
+        return stored ? JSON.parse(stored) : DEFAULT_EXPENSES;
+      } catch(e) {
+        return DEFAULT_EXPENSES;
+      }
+    }
+
+    function saveExpenses(expenses) {
+      localStorage.setItem('kansai_split_expenses', JSON.stringify(expenses));
+      renderExpenseList();
+      calculateSettlement();
+      updateExpenseBadge();
+    }
+
+    function updateExpenseBadge() {
+      const expenses = getStoredExpenses();
+      const badge = document.getElementById('expenseCountBadge');
+      const settleBadge = document.getElementById('settleSummaryBadge');
+      if (badge) {
+        if (expenses.length > 0) {
+          badge.textContent = expenses.length;
+          badge.classList.remove('hidden');
+        } else {
+          badge.classList.add('hidden');
+        }
+      }
+      if (settleBadge) {
+        settleBadge.textContent = expenses.length;
+      }
+    }
+
+    function setExpenseTab(tab) {
+      currentExpenseTab = tab;
+      ['list', 'settle', 'members'].forEach(t => {
+        const btn = document.getElementById(`tabBtn-${t}`);
+        const panel = document.getElementById(`expenseTab-${t}`);
+        if (t === tab) {
+          btn.className = "flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs font-bold transition";
+          panel.classList.remove('hidden');
+        } else {
+          btn.className = "flex-1 py-1.5 rounded-lg text-stone-500 hover:text-slate-900 font-bold transition";
+          panel.classList.add('hidden');
+        }
+      });
+      if (tab === 'settle') {
+        calculateSettlement();
+      }
+      lucide.createIcons();
+    }
+
+    function renderMemberOptions() {
+      const members = getStoredMembers();
+      
+      // Populate payer select
+      const payerSelect = document.getElementById('expPayer');
+      if (payerSelect) {
+        payerSelect.innerHTML = members.map(m => `<option value="${m}">${m}</option>`).join('');
+      }
+
+      // Populate beneficiaries checkboxes
+      const beneContainer = document.getElementById('beneficiariesCheckboxes');
+      if (beneContainer) {
+        beneContainer.innerHTML = members.map(m => `
+          <label class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-stone-100 border border-stone-200 hover:bg-stone-200 cursor-pointer select-none text-xs">
+            <input type="checkbox" name="expBeneficiary" value="${m}" checked class="w-3.5 h-3.5 rounded border-stone-300 text-indigo-600 focus:ring-0">
+            <span class="font-medium text-slate-800">${m}</span>
+          </label>
+        `).join('');
+      }
+
+      // Populate member management list
+      const membersList = document.getElementById('membersListContainer');
+      const memberCount = document.getElementById('memberCountText');
+      if (memberCount) memberCount.textContent = `共 ${members.length} 位`;
+
+      if (membersList) {
+        membersList.innerHTML = members.map(m => `
+          <div class="py-2 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-[10px]">
+                ${m.slice(0, 1)}
+              </div>
+              <span class="font-semibold text-slate-900">${m}</span>
+            </div>
+            ${members.length > 2 ? `
+              <button onclick="deleteMember('${m}')" class="text-stone-400 hover:text-rose-600 text-xs p-1" title="移除此成員">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            ` : '<span class="text-[10px] text-stone-300">至少保留2位</span>'}
+          </div>
+        `).join('');
+      }
+      lucide.createIcons();
+    }
+
+    function selectAllBeneficiaries(checked) {
+      document.querySelectorAll('input[name="expBeneficiary"]').forEach(cb => {
+        cb.checked = checked;
+      });
+    }
+
+    function addNewMember() {
+      const input = document.getElementById('newMemberInput');
+      const name = input.value.trim();
+      if (!name) {
+        showToast('請輸入成員名稱');
+        return;
+      }
+      const members = getStoredMembers();
+      if (members.includes(name)) {
+        showToast('此成員名稱已存在');
+        return;
+      }
+      members.push(name);
+      saveMembers(members);
+      input.value = '';
+      showToast(`已新增夥伴：${name}`);
+    }
+
+    function deleteMember(name) {
+      let members = getStoredMembers();
+      if (members.length <= 2) {
+        showToast('至少需保留兩名成員才能分帳');
+        return;
+      }
+      members = members.filter(m => m !== name);
+      saveMembers(members);
+      showToast(`已移除成員：${name}`);
+    }
+
+    function submitNewExpense() {
+      const title = document.getElementById('expTitle').value.trim();
+      const currency = document.getElementById('expCurrency').value;
+      const amount = parseFloat(document.getElementById('expAmount').value);
+      const payer = document.getElementById('expPayer').value;
+      const category = document.getElementById('expCategory').value;
+
+      const checkedBeneficiaries = Array.from(document.querySelectorAll('input[name="expBeneficiary"]:checked')).map(cb => cb.value);
+
+      if (!title) {
+        showToast('請填寫消費品項名稱');
+        return;
+      }
+      if (!amount || amount <= 0) {
+        showToast('請輸入有效的金額');
+        return;
+      }
+      if (checkedBeneficiaries.length === 0) {
+        showToast('至少需要選擇一位分攤成員');
+        return;
+      }
+
+      const expenses = getStoredExpenses();
+      const newExp = {
+        id: 'exp-' + Date.now(),
+        title,
+        currency,
+        amount,
+        payer,
+        beneficiaries: checkedBeneficiaries,
+        category,
+        date: new Date().toLocaleDateString('zh-TW', { month: 'numeric', day: 'numeric' })
+      };
+
+      expenses.unshift(newExp);
+      saveExpenses(expenses);
+
+      // Reset Form
+      document.getElementById('expTitle').value = '';
+      document.getElementById('expAmount').value = '';
+      selectAllBeneficiaries(true);
+      showToast('已成功記入分帳！');
+    }
+
+    function deleteExpense(id) {
+      let expenses = getStoredExpenses();
+      expenses = expenses.filter(e => e.id !== id);
+      saveExpenses(expenses);
+      showToast('已刪除該筆支出');
+    }
+
+    function getCategoryBadge(cat) {
+      switch(cat) {
+        case 'food': return { text: '美食', icon: 'utensils', bg: 'bg-rose-50 text-rose-700 border-rose-200' };
+        case 'transit': return { text: '交通', icon: 'train', bg: 'bg-purple-50 text-purple-700 border-purple-200' };
+        case 'ticket': return { text: '門票', icon: 'ticket', bg: 'bg-amber-50 text-amber-700 border-amber-200' };
+        case 'stay': return { text: '住宿', icon: 'hotel', bg: 'bg-blue-50 text-blue-700 border-blue-200' };
+        case 'shop': return { text: '購物', icon: 'shopping-bag', bg: 'bg-emerald-50 text-emerald-700 border-emerald-200' };
+        default: return { text: '其他', icon: 'tag', bg: 'bg-stone-100 text-stone-700 border-stone-200' };
+      }
+    }
+
+    function renderExpenseList() {
+      const expenses = getStoredExpenses();
+      const container = document.getElementById('expenseListContainer');
+      const countStat = document.getElementById('expenseTotalStat');
+      if (countStat) countStat.textContent = `共 ${expenses.length} 筆`;
+
+      if (!container) return;
+
+      if (expenses.length === 0) {
+        container.innerHTML = `
+          <div class="p-6 bg-white/70 rounded-2xl border border-stone-200 text-center text-stone-400">
+            尚未有任何記帳項目，可由上方填表新增。
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = expenses.map(exp => {
+        const cat = getCategoryBadge(exp.category);
+        const isJpy = exp.currency === 'JPY';
+        const rate = parseFloat(document.getElementById('exchangeRate')?.value) || 0.215;
+        const convertedTwd = isJpy ? Math.round(exp.amount * rate) : exp.amount;
+
+        return `
+          <div class="p-3 bg-white/80 rounded-2xl border border-stone-200/90 shadow-xs flex items-center justify-between gap-3 group">
+            <div class="flex items-start gap-2.5 min-w-0">
+              <div class="w-8 h-8 rounded-xl shrink-0 flex items-center justify-center border ${cat.bg}">
+                <i data-lucide="${cat.icon}" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="font-bold text-slate-900 text-xs truncate flex items-center gap-1.5">
+                  ${exp.title}
+                  <span class="text-[10px] text-stone-400 font-normal">(${exp.date})</span>
+                </div>
+                <div class="text-[10px] text-stone-500 mt-0.5 flex flex-wrap items-center gap-1">
+                  <span class="font-medium text-slate-700">由 <strong class="text-indigo-700">${exp.payer}</strong> 先付</span>
+                  <span>•</span>
+                  <span>分攤：${exp.beneficiaries.join(', ')}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-right shrink-0 flex items-center gap-2">
+              <div>
+                <div class="font-mono font-black text-xs text-slate-900">
+                  ${isJpy ? `¥${exp.amount.toLocaleString()}` : `$${exp.amount.toLocaleString()} TWD`}
+                </div>
+                ${isJpy ? `<div class="text-[10px] text-stone-400 font-mono">約 $${convertedTwd.toLocaleString()} TWD</div>` : ''}
+              </div>
+              <button onclick="deleteExpense('${exp.id}')" class="text-stone-300 hover:text-rose-500 p-1 transition" title="刪除此筆">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function calculateSettlement() {
+      const expenses = getStoredExpenses();
+      const members = getStoredMembers();
+      const rate = parseFloat(document.getElementById('exchangeRate')?.value) || 0.215;
+
+      // Unify currency into TWD for fair multi-currency balance settlement
+      // balances map: member -> net balance in TWD (positive = should receive, negative = owes money)
+      const balances = {};
+      const paidTotal = {};
+      const shareTotal = {};
+      let totalSpentTwd = 0;
+
+      members.forEach(m => {
+        balances[m] = 0;
+        paidTotal[m] = 0;
+        shareTotal[m] = 0;
+      });
+
+      expenses.forEach(exp => {
+        const costTwd = exp.currency === 'JPY' ? Math.round(exp.amount * rate) : exp.amount;
+        totalSpentTwd += costTwd;
+
+        if (balances[exp.payer] !== undefined) {
+          balances[exp.payer] += costTwd;
+          paidTotal[exp.payer] += costTwd;
+        }
+
+        const splitCount = exp.beneficiaries.length;
+        if (splitCount > 0) {
+          const perPersonTwd = costTwd / splitCount;
+          exp.beneficiaries.forEach(b => {
+            if (balances[b] !== undefined) {
+              balances[b] -= perPersonTwd;
+              shareTotal[b] += perPersonTwd;
+            }
+          });
+        }
+      });
+
+      // Update Overview stats
+      const twdEl = document.getElementById('totalSpendTwd');
+      const jpyEl = document.getElementById('totalSpendJpy');
+      if (twdEl) twdEl.textContent = `$${Math.round(totalSpentTwd).toLocaleString()} TWD`;
+      if (jpyEl) jpyEl.textContent = `¥${rate > 0 ? Math.round(totalSpentTwd / rate).toLocaleString() : 0} JPY`;
+
+      // Render balances breakdown
+      const balanceContainer = document.getElementById('memberBalanceList');
+      if (balanceContainer) {
+        balanceContainer.innerHTML = members.map(m => {
+          const net = Math.round(balances[m]);
+          const isCreditor = net > 0;
+          const isDebtor = net < 0;
+          const statusClass = isCreditor 
+            ? 'text-emerald-700 bg-emerald-50 border-emerald-200' 
+            : (isDebtor ? 'text-rose-700 bg-rose-50 border-rose-200' : 'text-stone-500 bg-stone-50 border-stone-200');
+
+          return `
+            <div class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-stone-100">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-slate-900 text-amber-200 flex items-center justify-center font-bold text-[10px]">
+                  ${m.slice(0, 1)}
+                </div>
+                <div>
+                  <div class="font-bold text-slate-900">${m}</div>
+                  <div class="text-[10px] text-stone-400">已代墊 $${Math.round(paidTotal[m]).toLocaleString()} ｜ 應負擔 $${Math.round(shareTotal[m]).toLocaleString()}</div>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg border font-mono font-bold text-xs ${statusClass}">
+                ${isCreditor ? `應收款 +$${net.toLocaleString()}` : (isDebtor ? `應支付 -$${Math.abs(net).toLocaleString()}` : '已結清 $0')}
+              </span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Compute optimal debt settlement transfers (Greedy algorithm for minimum transactions)
+      const debtors = []; // owes money (negative net)
+      const creditors = []; // should receive money (positive net)
+
+      Object.keys(balances).forEach(m => {
+        const val = Math.round(balances[m]);
+        if (val < -1) {
+          debtors.push({ name: m, amount: -val });
+        } else if (val > 1) {
+          creditors.push({ name: m, amount: val });
+        }
+      });
+
+      debtors.sort((a, b) => b.amount - a.amount);
+      creditors.sort((a, b) => b.amount - a.amount);
+
+      const transfers = [];
+      let i = 0, j = 0;
+      while (i < debtors.length && j < creditors.length) {
+        const debt = debtors[i].amount;
+        const cred = creditors[j].amount;
+        const settlementAmount = Math.min(debt, cred);
+
+        if (settlementAmount > 1) {
+          transfers.push({
+            from: debtors[i].name,
+            to: creditors[j].name,
+            amountTwd: settlementAmount,
+            amountJpy: rate > 0 ? Math.round(settlementAmount / rate) : 0
+          });
+        }
+
+        debtors[i].amount -= settlementAmount;
+        creditors[j].amount -= settlementAmount;
+
+        if (debtors[i].amount <= 1) i++;
+        if (creditors[j].amount <= 1) j++;
+      }
+
+      // Render transfers
+      const transfersContainer = document.getElementById('settlementTransfersContainer');
+      if (transfersContainer) {
+        if (transfers.length === 0) {
+          transfersContainer.innerHTML = `
+            <div class="p-3 rounded-xl bg-white/70 text-center text-emerald-700 font-medium">
+              ✨ 目前所有款項皆已平帳，彼此互不相欠！
+            </div>
+          `;
+        } else {
+          transfersContainer.innerHTML = transfers.map(t => `
+            <div class="p-3 bg-white rounded-xl border border-indigo-200/80 shadow-xs flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md">${t.from}</span>
+                <span class="text-stone-400 font-bold">➔</span>
+                <span class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">${t.to}</span>
+              </div>
+              <div class="text-right">
+                <div class="font-mono font-black text-indigo-900 text-sm">$${t.amountTwd.toLocaleString()} TWD</div>
+                <div class="text-[10px] text-stone-400 font-mono">(約 ¥${t.amountJpy.toLocaleString()} JPY)</div>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+
+      window.lastCalculatedTransfers = transfers;
+      window.lastTotalSpentTwd = totalSpentTwd;
+    }
+
+    function copySettlementForLine() {
+      const transfers = window.lastCalculatedTransfers || [];
+      const totalTwd = Math.round(window.lastTotalSpentTwd || 0);
+      const expenses = getStoredExpenses();
+      const rate = parseFloat(document.getElementById('exchangeRate')?.value) || 0.215;
+
+      let msg = `【關西 2026 旅費結算清單】🗾\n`;
+      msg += `總花費：$${totalTwd.toLocaleString()} TWD (約 ¥${rate > 0 ? Math.round(totalTwd / rate).toLocaleString() : 0} JPY)\n`;
+      msg += `項目總數：共 ${expenses.length} 筆\n\n`;
+      msg += `💡 【平帳轉帳指示（誰給誰）】：\n`;
+
+      if (transfers.length === 0) {
+        msg += `✨ 全員已平帳，目前互不相欠！\n`;
+      } else {
+        transfers.forEach((t, idx) => {
+          msg += `${idx + 1}. ${t.from} 應給 ${t.to} ➡️ $${t.amountTwd.toLocaleString()} TWD (或 ¥${t.amountJpy.toLocaleString()} JPY)\n`;
+        });
+      }
+
+      msg += `\n📅 計算時間：${new Date().toLocaleDateString('zh-TW')} ${new Date().toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })}`;
+      copySnippet(msg);
+    }
+
+    // Local Storage helpers
+    function getStoredChecks() {
+      try {
+        return JSON.parse(localStorage.getItem('kansai_itinerary_checks') || '{}');
+      } catch(e) {
+        return {};
+      }
+    }
+
+    function saveCheck(id, isChecked) {
+      const checks = getStoredChecks();
+      if (isChecked) {
+        checks[id] = true;
+      } else {
+        delete checks[id];
+      }
+      localStorage.setItem('kansai_itinerary_checks', JSON.stringify(checks));
+      updateOverallProgress();
+    }
+
+    function getStoredPacking() {
+      try {
+        return JSON.parse(localStorage.getItem('kansai_packing_checks') || '{}');
+      } catch(e) {
+        return {};
+      }
+    }
+
+    function savePackingCheck(id, isChecked) {
+      const checks = getStoredPacking();
+      if (isChecked) {
+        checks[id] = true;
+      } else {
+        delete checks[id];
+      }
+      localStorage.setItem('kansai_packing_checks', JSON.stringify(checks));
+      renderChecklistProgress();
+    }
+
+    function getBadge(type) {
+      switch(type) {
+        case 'flight': return { text: '航班動態', class: 'badge-flight', icon: 'plane' };
+        case 'spot': return { text: '經典景點', class: 'badge-spot', icon: 'camera' };
+        case 'food': return { text: '道地美食', class: 'badge-food', icon: 'utensils' };
+        case 'transit': return { text: '交通銜接', class: 'badge-transit', icon: 'train' };
+        case 'event': return { text: '熱血賽事', class: 'badge-event', icon: 'flame' };
+        default: return { text: '下榻飯店', class: 'bg-stone-100 text-stone-700 border border-stone-200', icon: 'hotel' };
+      }
+    }
+
+    function renderTabs() {
+      const container = document.getElementById('dayTabs');
+      const checks = getStoredChecks();
+
+      container.innerHTML = itinerary.map(day => {
+        let items = day.items || (currentSubGroup === 'usj' ? day.usjItems : day.freeItems);
+        let doneCount = items.filter(it => checks[it.id]).length;
+        let isComplete = items.length > 0 && doneCount === items.length;
+
+        return `
+          <button onclick="switchDay(${day.day})" 
+            class="snap-start shrink-0 px-4 py-2.5 rounded-2xl transition duration-200 text-left cursor-pointer border relative ${
+              currentDay === day.day 
+                ? 'bg-slate-900 text-white border-slate-900 shadow-md scale-[1.02]' 
+                : 'glass-card text-stone-600 border-transparent hover:border-stone-300'
+            }">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[10px] tracking-wider uppercase font-mono ${currentDay === day.day ? 'text-amber-200' : 'text-stone-400'}">
+                Day 0${day.day}
+              </span>
+              ${isComplete ? '<span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded font-bold">ALL✓</span>' : ''}
+            </div>
+            <div class="text-xs font-bold whitespace-nowrap mt-0.5">${day.date}</div>
+            <div class="text-[10px] truncate max-w-[90px] opacity-80">${day.city.split(' ')[0]}</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderDaySummary() {
+      const day = itinerary.find(d => d.day === currentDay);
+      const container = document.getElementById('daySummaryCard');
+      
+      container.innerHTML = `
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-extrabold text-sm text-slate-900">Day 0${day.day}｜${day.tagline}</span>
+          </div>
+          <p class="text-stone-500 leading-relaxed max-w-xl">
+            💡 <strong class="text-stone-700">錦囊妙計：</strong>${day.tip}
+          </p>
+        </div>
+        <div class="flex items-center gap-2.5 bg-amber-500/10 border border-amber-300/40 px-3 py-2 rounded-xl shrink-0 self-start sm:self-center">
+          <i data-lucide="${day.weatherIcon || 'sun'}" class="w-5 h-5 text-amber-600"></i>
+          <div>
+            <div class="text-[10px] text-amber-800 font-semibold leading-tight">初秋平均氣候</div>
+            <div class="text-xs font-bold text-amber-900">${day.weather}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTimeline() {
+      const dayData = itinerary.find(d => d.day === currentDay);
+      const toggleBox = document.getElementById('groupToggle');
+      
+      if (dayData.isSplit) {
+        toggleBox.classList.remove('hidden');
+      } else {
+        toggleBox.classList.add('hidden');
+      }
+
+      let items = dayData.items;
+      if (dayData.isSplit) {
+        items = currentSubGroup === 'usj' ? dayData.usjItems : dayData.freeItems;
+      }
+
+      // Filter by category
+      if (currentCategory !== 'all') {
+        if (currentCategory === 'transit') {
+          items = items.filter(it => it.type === 'transit' || it.type === 'flight');
+        } else {
+          items = items.filter(it => it.type === currentCategory);
+        }
+      }
+
+      const timeline = document.getElementById('timelineList');
+      const checks = getStoredChecks();
+
+      if (items.length === 0) {
+        timeline.innerHTML = `
+          <div class="glass-card p-6 rounded-2xl text-center text-stone-500 text-xs">
+            此分類在當日無特定行程，點選上方「全部」看完整行程。
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      timeline.innerHTML = items.map((item) => {
+        const badge = getBadge(item.type);
+        const isChecked = !!checks[item.id];
+
+        // Specific Flight Card Template
+        if (item.isFlightCard) {
+          return `
+            <div class="relative group">
+              <div class="absolute -left-[31px] sm:-left-[35px] top-4 w-4 h-4 rounded-full border-2 border-white ${isChecked ? 'bg-emerald-500' : 'bg-sky-600'} ring-4 ring-sky-100 group-hover:scale-125 transition"></div>
+
+              <div class="glass-card rounded-2xl p-5 border border-sky-200/80 shadow-md bg-gradient-to-br from-white/95 to-sky-50/50 ${isChecked ? 'opacity-60 grayscale-[40%]' : ''}" id="card-${item.id}">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-sky-600 text-white shadow-xs">
+                      <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i> ${item.flightCode}
+                    </span>
+                    <span class="text-xs font-bold text-sky-900">${item.airline}</span>
+                  </div>
+                  <label class="inline-flex items-center gap-1.5 text-stone-500 hover:text-slate-900 cursor-pointer text-xs">
+                    <input type="checkbox" onchange="toggleCheck(this, '${item.id}')" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-slate-900 focus:ring-0">
+                    <span class="text-[11px] font-medium">抵達打卡</span>
+                  </label>
+                </div>
+
+                <!-- Flight Route Visualizer -->
+                <div class="bg-white/90 rounded-2xl p-3.5 border border-stone-200/60 my-2">
+                  <div class="flex items-center justify-between text-center">
+                    <div>
+                      <div class="text-lg font-black text-slate-800">${item.depAirport.split(' ')[0]}</div>
+                      <div class="text-[11px] text-stone-400 font-medium">${item.depAirport.split(' ')[1] || ''}</div>
+                      <div class="text-xs font-bold text-slate-700 mt-1">${item.depTime}</div>
+                    </div>
+
+                    <div class="flex-1 px-4 flex flex-col items-center">
+                      <div class="text-[10px] text-stone-400 font-mono mb-1">直飛航段</div>
+                      <div class="w-full relative flex items-center justify-center">
+                        <div class="w-full h-0.5 bg-stone-200 border-dashed border-t border-sky-400"></div>
+                        <i data-lucide="plane" class="w-4 h-4 text-sky-600 absolute rotate-90"></i>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="text-lg font-black text-slate-800">${item.arrAirport.split(' ')[0]}</div>
+                      <div class="text-[11px] text-stone-400 font-medium">${item.arrAirport.split(' ')[1] || ''}</div>
+                      <div class="text-xs font-bold text-slate-700 mt-1">${item.arrTime}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="text-xs text-stone-600 mt-2.5 leading-relaxed">${item.desc}</p>
+
+                <!-- Helpful Quick Links -->
+                <div class="mt-4 pt-3 border-t border-stone-200/60 flex flex-wrap items-center justify-between gap-2">
+                  <a href="https://www.google.com/search?q=${encodeURIComponent(item.flightCode + ' flight status')}" 
+                     target="_blank" 
+                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-xs transition">
+                    <i data-lucide="radar" class="w-3.5 h-3.5"></i> Google 即時航班雷達
+                  </a>
+                  <div class="flex items-center gap-3">
+                    <a href="${item.trackUrl}" target="_blank" class="text-[11px] text-stone-500 hover:text-sky-700 font-medium underline flex items-center gap-1">
+                      Flightradar24 <i data-lucide="external-link" class="w-3 h-3"></i>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.maps)}" target="_blank" class="text-[11px] text-stone-600 hover:text-slate-900 font-semibold flex items-center gap-1">
+                      <i data-lucide="map-pin" class="w-3 h-3 text-rose-500"></i> 航廈地圖
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        // Standard Itinerary Card
+        return `
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[35px] top-4 w-4 h-4 rounded-full border-2 border-white ${isChecked ? 'bg-emerald-500 ring-emerald-100' : 'bg-slate-900 ring-stone-200'} ring-4 group-hover:scale-125 transition"></div>
+
+            <div class="glass-card rounded-2xl p-4 sm:p-5 transition-all duration-200 hover:shadow-md ${isChecked ? 'opacity-50 grayscale-[30%]' : ''}" id="card-${item.id}">
+              <div class="flex items-center justify-between mb-2 gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-extrabold text-slate-900 text-sm bg-stone-100 px-2 py-0.5 rounded-md">${item.time}</span>
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-bold ${badge.class}">
+                    <i data-lucide="${badge.icon}" class="w-3 h-3"></i>
+                    ${badge.text}
+                  </span>
+                </div>
+                
+                <label class="inline-flex items-center gap-1.5 text-stone-400 hover:text-stone-800 cursor-pointer select-none text-xs">
+                  <input type="checkbox" onchange="toggleCheck(this, '${item.id}')" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-slate-900 focus:ring-0">
+                  <span class="text-[11px] font-medium">打卡</span>
+                </label>
+              </div>
+
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2 ${isChecked ? 'line-through text-stone-500' : ''}">
+                ${item.title}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-stone-600 mt-1.5 leading-relaxed">
+                ${item.desc}
+              </p>
+
+              ${item.highlight ? `
+                <div class="mt-2.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold">
+                  <span>⚡</span> ${item.highlight}
+                </div>
+              ` : ''}
+
+              <div class="mt-3 pt-2.5 border-t border-stone-200/60 flex items-center justify-between">
+                <button onclick="copySnippet('${item.title}')" class="text-[11px] text-stone-400 hover:text-stone-700 font-medium flex items-center gap-1">
+                  <i data-lucide="copy" class="w-3 h-3"></i> 複製地名
+                </button>
+                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.maps || item.title)}" 
+                   target="_blank" 
+                   class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-700 hover:text-sky-900 transition">
+                  <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Maps 導航
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function switchDay(d) {
+      currentDay = d;
+      renderTabs();
+      renderDaySummary();
+      renderTimeline();
+    }
+
+    function setSubGroup(group) {
+      currentSubGroup = group;
+      const btnUsj = document.getElementById('btn-usj');
+      const btnFree = document.getElementById('btn-free');
+      if (group === 'usj') {
+        btnUsj.className = "flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 bg-slate-900 text-white shadow-sm transition";
+        btnFree.className = "flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 text-stone-600 hover:bg-stone-100 transition";
+      } else {
+        btnFree.className = "flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 bg-slate-900 text-white shadow-sm transition";
+        btnUsj.className = "flex-1 sm:flex-none py-1.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 text-stone-600 hover:bg-stone-100 transition";
+      }
+      renderTimeline();
+      updateOverallProgress();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = "filter-pill active px-3 py-1 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-xs";
+        } else {
+          btn.className = "filter-pill px-3 py-1 rounded-xl text-xs font-medium glass-card text-stone-600 hover:text-slate-900";
+        }
+      });
+      renderTimeline();
+    }
+
+    function toggleCheck(checkbox, id) {
+      saveCheck(id, checkbox.checked);
+      renderTabs();
+      renderTimeline();
+      showToast(checkbox.checked ? "已標記完成打卡！" : "已取消打卡狀態");
+    }
+
+    function updateOverallProgress() {
+      const checks = getStoredChecks();
+      let total = 0;
+      let checked = 0;
+
+      itinerary.forEach(day => {
+        let items = day.items || (currentSubGroup === 'usj' ? day.usjItems : day.freeItems);
+        total += items.length;
+        items.forEach(it => {
+          if (checks[it.id]) checked++;
+        });
+      });
+
+      const percent = total > 0 ? Math.round((checked / total) * 100) : 0;
+      const textElem = document.getElementById('overallProgressText');
+      if (textElem) {
+        textElem.textContent = `${percent}% 已完成 (${checked}/${total})`;
+      }
+    }
+
+    function renderChecklist() {
+      const container = document.getElementById('checklistContainer');
+      const checks = getStoredPacking();
+
+      container.innerHTML = checklistData.map(group => `
+        <div class="p-3.5 bg-white/70 rounded-2xl border border-stone-200">
+          <div class="font-extrabold text-slate-900 text-xs mb-2 flex items-center gap-1.5">
+            <span class="w-1.5 h-3.5 bg-emerald-600 rounded-full"></span>
+            ${group.category}
+          </div>
+          <div class="space-y-2">
+            ${group.items.map(item => {
+              const isChecked = !!checks[item.id];
+              return `
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" onchange="togglePacking(this, '${item.id}')" ${isChecked ? 'checked' : ''} class="w-4 h-4 rounded border-stone-300 text-emerald-700 focus:ring-0">
+                  <span class="${isChecked ? 'line-through text-stone-400' : 'text-stone-700 font-medium'}">${item.text}</span>
+                </label>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      renderChecklistProgress();
+      lucide.createIcons();
+    }
+
+    function togglePacking(checkbox, id) {
+      savePackingCheck(id, checkbox.checked);
+      renderChecklist();
+    }
+
+    function renderChecklistProgress() {
+      const checks = getStoredPacking();
+      let total = 0;
+      let checked = 0;
+      checklistData.forEach(c => {
+        total += c.items.length;
+        c.items.forEach(it => {
+          if (checks[it.id]) checked++;
+        });
+      });
+      const counter = document.getElementById('checklistCounter');
+      if (counter) {
+        counter.textContent = `${checked} / ${total} 已勾選 (${total > 0 ? Math.round((checked/total)*100) : 0}%)`;
+      }
+    }
+
+    function calculateCurrency() {
+      convertFromJpy();
+    }
+
+    function convertFromJpy() {
+      const rate = parseFloat(document.getElementById('exchangeRate').value) || 0.215;
+      const jpy = parseFloat(document.getElementById('inputJpy').value) || 0;
+      document.getElementById('inputTwd').value = Math.round(jpy * rate);
+    }
+
+    function convertFromTwd() {
+      const rate = parseFloat(document.getElementById('exchangeRate').value) || 0.215;
+      const twd = parseFloat(document.getElementById('inputTwd').value) || 0;
+      document.getElementById('inputJpy').value = rate > 0 ? Math.round(twd / rate) : 0;
+    }
+
+    function setJpyPreset(val) {
+      document.getElementById('inputJpy').value = val;
+      convertFromJpy();
+    }
+
+    function copySnippet(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`已複製：「${text}」`);
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(`已複製：「${text}」`);
+      } catch (e) {
+        showToast("複製失敗，請手動複製");
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyDaySchedule() {
+      const day = itinerary.find(d => d.day === currentDay);
+      let items = day.items || (currentSubGroup === 'usj' ? day.usjItems : day.freeItems);
+      let text = `【關西 2026】Day 0${day.day} (${day.date}) 行程表：\n`;
+      items.forEach(it => {
+        text += `⏰ ${it.time} | ${it.title} - ${it.desc}\n`;
+      });
+      text += `\n📍 住宿：APA 難波站前 Tower`;
+      copySnippet(text);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2300);
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('hidden');
+      if (id === 'checklistModal') renderChecklist();
+      if (id === 'expenseModal') {
+        renderMemberOptions();
+        renderExpenseList();
+        calculateSettlement();
+      }
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hidden');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTabs();
+      renderDaySummary();
+      setSubGroup('usj');
+      updateOverallProgress();
+      convertFromJpy();
+      renderMemberOptions();
+      renderExpenseList();
+      updateExpenseBadge();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
